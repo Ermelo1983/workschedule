@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'whoami/index'
+  root to: 'whoami#index'
 
   devise_for :users
   resources :users

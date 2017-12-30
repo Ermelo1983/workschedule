@@ -1,6 +1,7 @@
 <h1>Whoami#index</h1>
 <% if current_user.present?%>
 <%= "hoi #{current_user.email}" %>
+<%= current_user.first_name %>
 <% else %>
 <%= "log dan in"%>
 <% end %>
