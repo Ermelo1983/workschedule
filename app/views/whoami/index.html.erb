@@ -5,3 +5,8 @@
 <% else %>
 <%= "log dan in"%>
 <% end %>
+
+<li><%= link_to "Sign in", new_user_session_path%> <li>
+
+<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %><li>
+  <li><%= link_to "new_user", new_user_path %><li>
