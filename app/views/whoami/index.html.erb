@@ -6,7 +6,9 @@
 <%= "log dan in"%>
 <% end %>
 
-<li><%= link_to "Sign in", new_user_session_path%> <li>
+<p><%= link_to "Sign in", new_user_session_path%> </p>
 
-<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %><li>
-  <li><%= link_to "new_user", new_user_path %><li>
+<p><%= link_to "Logout", destroy_user_session_path, :method => :delete %></p>
+<% if current_user.present? && current_user.role == 'Admin' %>
+<p><%= link_to "new_user", new_user_path %></p>
+<% end%>
