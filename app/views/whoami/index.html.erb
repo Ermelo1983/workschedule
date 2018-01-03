@@ -10,5 +10,6 @@
 
 <p><%= link_to "Logout", destroy_user_session_path, :method => :delete %></p>
 <% if current_user.present? && current_user.role == 'Admin' %>
-<p><%= link_to "new_user", new_user_path %></p>
+<p><%= link_to "new user", new_user_path %></p>
+<p><%= link_to "all users", 'users' %></p>
 <% end%>
