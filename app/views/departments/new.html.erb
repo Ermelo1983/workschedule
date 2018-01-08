@@ -1,0 +1,14 @@
+<h1>Create a new department </h1>
+
+<%= simple_form_for @department do |f| %>
+<%#devise_error_messages!%>
+<%= f.input :name %>
+<%= f.input :street %>
+<%= f.input :house_number %>
+<%= f.input :zip__or_postal_code %>
+<%= f.input :city %>
+
+<div class="actions">
+  <%= f.submit "Save" %>
+</div>
+<% end %>

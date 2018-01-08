@@ -3,8 +3,7 @@
   <thead>
     <tr>
       <th>id</th>
-      <!-- for using sorted on id in table use this on id -->
-      <!-- <th><%= sortable "id"%></th> -->
+      <!-- for using sorted on another column change this in controller method sort_column -->
       <th>first name</th>
       <th>last name</th>
       <th>email</th>
@@ -13,7 +12,6 @@
       <th>fulltime contract</th>
       <th>role</th>
       <th> link to user </th>
-
     </tr>
   </thead>
   <% @users.each do |user| %>
@@ -28,8 +26,6 @@
       <td><%= user.full_time %></td>
       <td><%= user.role %></td>
       <td><%= link_to "go to user", user_path(user.id)%></td>
-
-
     </tr>
     <% end %>
   </tbody>
