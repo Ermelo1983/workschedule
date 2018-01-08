@@ -1,33 +1,33 @@
 require 'test_helper'
 
-class DepartmentsControllerTest < ActionDispatch::IntegrationTest
+class LocationsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get departments_index_url
+    get locations_index_url
     assert_response :success
   end
 
   test "should get new" do
-    get departments_new_url
+    get locations_new_url
     assert_response :success
   end
 
   test "should get show" do
-    get departments_show_url
+    get locations_show_url
     assert_response :success
   end
 
   test "should get create" do
-    get departments_create_url
+    get locations_create_url
     assert_response :success
   end
 
   test "should get update" do
-    get departments_update_url
+    get locations_update_url
     assert_response :success
   end
 
   test "should get destroy" do
-    get departments_destroy_url
+    get locations_destroy_url
     assert_response :success
   end
 

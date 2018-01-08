@@ -1,4 +1,4 @@
-class Department < ApplicationRecord
+class Location < ApplicationRecord
 
   def full_address
     ([street, house_number] - ['']).compact.join(' ')
