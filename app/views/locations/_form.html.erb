@@ -1,0 +1,12 @@
+<%= simple_form_for @location do |f| %>
+<%#devise_error_messages!%>
+<%= f.input :name %>
+<%= f.input :street %>
+<%= f.input :house_number %>
+<%= f.input :zip__or_postal_code %>
+<%= f.input :city %>
+
+<div class="actions">
+  <%= f.submit "Save" %>
+</div>
+<% end %>

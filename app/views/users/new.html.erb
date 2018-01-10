@@ -1,28 +1,3 @@
 <h1>Create a new user </h1>
 
-<%= simple_form_for @user do |f| %>
-<%#devise_error_messages!%>
-<%= f.input :first_name %>
-<%= f.input :last_name %>
-<%= f.input :role %>
-<%= f.input :department %>
-<%= f.input :floor %>
-<%= f.input :full_time %>
-
-<%= f.input :email %>
-<div class="field">
-  <%= f.label :password %>
-  <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em>
-  <% end %><br />
-  <%= f.password_field :password, autocomplete: "off" %>
-</div>
-<div class="field">
-  <%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-</div>
-
-<div class="actions">
-  <%= f.submit "Save" %>
-</div>
-<% end %>
+<%= render 'form'%>

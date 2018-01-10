@@ -15,6 +15,7 @@ class LocationsController < ApplicationController
 
   def create
     Location.create(location_params)
+    redirect_to locations_path
   end
 
   def update

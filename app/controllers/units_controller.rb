@@ -1,4 +1,6 @@
 class UnitsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def index
     @units = Unit.order(sort_column + " " + sort_direction)
   end
@@ -13,6 +15,7 @@ class UnitsController < ApplicationController
 
   def create
     Unit.create(unit_params)
+      redirect_to units_path
   end
 
   def update
