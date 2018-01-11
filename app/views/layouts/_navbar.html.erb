@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" <%=link_to 'Home', root_path%></a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Location
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" <%= link_to 'Location', locations_path %></a>
+          <a class="dropdown-item" <%= link_to 'Add new location', new_location_path %></a>
+          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Unit
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" <%= link_to 'Unit', units_path %></a>
+          <a class="dropdown-item" <%= link_to 'Add new unit', new_unit_path %></a>
+          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+        </div>
+      </li>
+      <% if current_user.present? && current_user.role = "Admin"%>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          User
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" <%= link_to 'User', users_path %></a>
+          <a class="dropdown-item" <%= link_to 'Add new user', new_user_path %></a>
+          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <ul class="nav navbar-nav navbar">
+    <% if current_user.present?%>
+    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %>></li>
+    <% else %>
+    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+    <% end%>
+  </ul>
+</div>
+</nav>
