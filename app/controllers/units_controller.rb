@@ -26,7 +26,7 @@ class UnitsController < ApplicationController
 
   private
   def unit_params
-    params.require(:unit).permit(:name, :specialism, :description, :care_burden)
+    params.require(:unit).permit(:name, :specialism, :description, :care_burden, :location_id)
   end
 
   def sort_column

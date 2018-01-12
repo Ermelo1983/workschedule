@@ -18,8 +18,11 @@ gem 'sass-rails', '~> 5.0'
 gem 'bootstrap', '~> 4.0.0.beta3'
 
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
 gem 'sprockets-rails', '~> 3.0', '>= 3.0.4'
+
+# Use typeahead for autocomplete textboxes.
+gem 'twitter-typeahead-rails', '~> 0.11.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -40,6 +43,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.3.0'
 #use simple_form for forms
 gem 'simple_form', '~> 3.5.0'
+
+# Use RABL for json views
+gem 'rabl', '~> 0.13.1'
 
 
 

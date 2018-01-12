@@ -8,4 +8,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :role, :department, :floor, :full_time  ])
     devise_parameter_sanitizer.permit(:create, keys: [:first_name, :last_name, :role, :department, :floor, :full_time  ])
   end
+
 end

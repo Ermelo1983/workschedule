@@ -24,6 +24,10 @@ class LocationsController < ApplicationController
   def destroy
   end
 
+  def typeahead
+    @locations = Location.all
+  end
+
   private
   def location_params
     params.require(:location).permit(:name, :street, :house_number, :zip__or_postal_code, :city)
