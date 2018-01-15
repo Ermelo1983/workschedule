@@ -1,6 +1,28 @@
-<% location = @location %>
+<%location = @location %>
 <h1><%= location.name %></h1>
 <p><%= location.full_address %></p>
 <p><%= location.zip__or_postal_code%> <%= location.city %></p>
+<br>
+<h2> Units/floors </h2>
+<% location.units.each do |unit| %>
+<h3><%= unit.name %></h3>
+<p><%= "specialism: #{unit.specialism}" %></p>
+<p><%= "description: #{unit.description}" %></p>
+<p><%= "care burden: #{unit.care_burden}" %></p>
+<p><%= "employees: #{unit.employees.count}"%></p>
+<br>
+<% end %>
+
+<h2><%= "Employees #{location.name}"%> </h2>
+<% location.units.each do |unit| %>
+<% unit.employees.each do |employee|%>
+<%= employee.first_name %>
+<%= employee.last_name %>
+<% end %>
+<% end %>
+<br>
+
+
+
 
 <%= link_to 'new', new_unit_path %>

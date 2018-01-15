@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111113934) do
+ActiveRecord::Schema.define(version: 20180112185416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "employees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street"
+    t.string "house_number"
+    t.string "zip_or_postal_code"
+    t.string "city"
+    t.date "birth_date"
+    t.string "bank_account"
+    t.string "payscale"
+    t.string "persons_number"
+    t.integer "contract_hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "unit_id"
+    t.index ["unit_id"], name: "index_employees_on_unit_id"
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
