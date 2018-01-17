@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>WorkscheduleShifts</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>WorkscheduleShifts</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<%= render 'layouts/navbar'%>
+<body>
+  <div class='container'>
     <%= yield %>
-  </body>
+  </div>
+
+</body>
 </html>

@@ -1,0 +1,14 @@
+<%employee = @employee %>
+<h1> Employee</h1>
+<p><%= content_tag :strong, "Name: "%><%= employee.full_name %></p>
+<p><%= content_tag :strong, "Adress: "%><%= employee.full_address %></p>
+<p><%= content_tag :strong, "postal or zip code: "%><%= employee.zip_or_postal_code%> <%= employee.city %></p>
+<p><%= content_tag :strong, "birthdate: "%><%= employee.birth_date %></p>
+<p><%= content_tag :strong, "bank account: "%><%= employee.bank_account %></p>
+<p><%= content_tag :strong, "payscale: "%><%= employee.payscale %></p>
+<p><%= content_tag :strong, "Personsnumber: "%><%= employee.persons_number %></p>
+<p><%= content_tag :strong, "Contract hours: "%><%= employee.contract_hours %></p>
+<p><%= content_tag :strong, "Location: "%><%= employee.unit.location.name %></p>
+<p><%= content_tag :strong, "Floor: "%><%= employee.unit.name %></p>
+
+<br>

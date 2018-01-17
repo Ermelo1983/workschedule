@@ -1,0 +1,58 @@
+<%= simple_form_for @unit do |f| %>
+<%#devise_error_messages!%>
+<%= f.input :name %>
+<%= f.input :specialism %>
+<%= f.input :description %>
+<%= f.input :care_burden %>
+<%= f.association :location%>
+<!-- <%= f.association :location, as: :typeahead, typeahead_suggestion_label: :name, value_method: :name%> -->
+
+<div class="actions">
+  <%= f.submit "Save" %>
+</div>
+<% end %>
+
+<script>
+    $(function () {
+        var location_id = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace( 'name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '<%= typeahead_locations_path(l: 10, q: 'QUERY').html_safe %>',
+                wildcard: 'QUERY'
+            }
+        });
+        $('#unit_location_id_search')
+            .typeahead({minLength: 1}, {
+                name: 'location_id',
+                display: 'name',
+                source: location_id,
+                limit: Infinity,
+                templates: {
+                    empty: [
+                        '<div class="empty-message">',
+                        '<%= 'niets gevonden'%>',
+                        '</div>'
+                    ].join('\n'),
+                    suggestion: function (a) {
+                        return '<div><strong>'+ typeaheadHelper.highlight(a.location.name,  a._query) + '</strong> - '
+                    }
+                }
+            })
+            .bind('typeahead:select', function (ev, suggestion) {
+                $(this).typeahead('val', null).blur();
+                var valueHtml = $('#unit_location_id_html');
+                valueHtml.find('.selected-value').text(suggestion.location.name);
+                valueHtml.show();
+                $('#unit_location_id').val(suggestion.location.id);
+            })
+
+            .bind('keypress keydown keyup', function (e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+    });
+
+</script>

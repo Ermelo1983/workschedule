@@ -1,0 +1,36 @@
+<h1>Locations</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <!-- for using sorted on another column change this in controller method sort_column -->
+      <th>name</th>
+      <th>street</th>
+      <th>house_number</th>
+      <th>zip__or_postal_code</th>
+      <th>city</th>
+      <% if current_user.present? && current_user.role == 'Admin' %>
+      <th> link to location </th>
+      <% end %>
+    </tr>
+  </thead>
+  <% @locations.each do |location| %>
+  <tbody>
+    <tr>
+      <td><%= location.id%></td>
+      <td><%= location.name %></td>
+      <td><%= location.street %></td>
+      <td><%= location.house_number %></td>
+      <td><%= location.zip__or_postal_code %></td>
+      <td><%= location.city %></td>
+      <% if current_user.present? && current_user.role == 'Admin' %>
+      <td><%= link_to "go to #{location.name}", location_path(location.id)%></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_user.present? && current_user.role == 'Admin' %>
+<p><%= link_to "new location", new_location_path %></p>
+<% end %>
