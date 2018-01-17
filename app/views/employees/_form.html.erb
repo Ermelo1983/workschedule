@@ -1,0 +1,67 @@
+<%= simple_form_for @employee do |f| %>
+<%#devise_error_messages!%>
+<%= f.input :first_name %>
+<%= f.input :last_name %>
+<%= f.input :street %>
+<%= f.input :house_number %>
+<%= f.input :zip_or_postal_code %>
+<%= f.input :city %>
+<%= f.input :birth_date %>
+<%= f.input :bank_account %>
+<%= f.input :payscale %>
+<%= f.input :persons_number %>
+<%= f.input :contract_hours %>
+
+<%= f.association :unit ,as: :typeahead, typeahead_suggestion_label: :name, value_method: :id %>
+
+<div class="actions">
+  <%= f.submit "Save" %>
+</div>
+<% end %>
+
+<script>
+
+    $(function () {
+        var unit_id = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace( 'name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '<%= typeahead_units_path(l: 10, q: 'QUERY').html_safe %>',
+                wildcard: 'QUERY'
+            }
+        });
+        $('#employee_unit_id_search')
+            .typeahead({minLength: 1}, {
+                name: 'unit_id',
+                display: 'name',
+                source: unit_id,
+                limit: Infinity,
+                templates: {
+                    empty: [
+                        '<div class="empty-message">',
+                        '<%= 'niets gevonden'%>',
+                        '</div>'
+                    ].join('\n'),
+                    suggestion: function (a) {
+                        return '<div><strong>'+ typeaheadHelper.highlight(a.unit.name,  a._query) + '</strong> - '
+                    }
+                }
+            })
+            .bind('typeahead:select', function (ev, suggestion) {
+                $(this).typeahead('val', null).blur();
+                var valueHtml = $('#employee_unit_id_html');
+                valueHtml.find('.selected-value').text(suggestion.unit.name);
+                valueHtml.show();
+                $('#employee_unit_id').val(suggestion.unit.id);
+            })
+
+            .bind('keypress keydown keyup', function (e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+    });
+
+</script>

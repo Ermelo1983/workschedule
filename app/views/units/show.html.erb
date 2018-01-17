@@ -1,2 +1,16 @@
-<h1>Units#show</h1>
-<p>Find me in app/views/units/show.html.erb</p>
+<%unit = @unit %>
+<h1><%= unit.name %></h1>
+<p><%= "specialism: #{unit.specialism}" %></p>
+<p><%= "description: #{unit.description}" %></p>
+<p><%= "care burden: #{unit.care_burden}" %></p>
+<p><%= "employees: #{unit.employees.count}"%></p>
+<br>
+
+<h2><%= "Employees" %> </h2>
+<% unit.employees.each do |employee|%>
+<%= employee.first_name %>
+<%= employee.last_name %>
+<% end %>
+<br>
+
+<%= link_to 'add new employee', new_employee_path %>

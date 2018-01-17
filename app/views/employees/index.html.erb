@@ -1,2 +1,48 @@
-<h1>Employees#index</h1>
-<p>Find me in app/views/employees/index.html.erb</p>
+<h1>Employees</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <!-- for using sorted on another column change this in controller method sort_column -->
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>street</th>
+      <th>house_number</th>
+      <th>zip_or_postal_code</th>
+      <th>city</th>
+      <th>contract_hours</th>
+      <th> location </th>
+      <th> unit </th>
+      <th> link to employee </th>
+    </tr>
+  </thead>
+  <% @employees.each do |employee| %>
+  <% location = Location.find_by_id(employee.unit.location_id) %>
+  <!-- moet nog anders aangeroepen worden w.s. even kijken naar models rechten voor nu werkt het maar is duur  -->
+  <tbody>
+    <tr>
+      <td><%= employee.id%></td>
+      <td><%= employee.first_name %></td>
+      <td><%= employee.last_name %></td>
+      <td><%= employee.street %></td>
+      <td><%= employee.house_number %></td>
+      <td><%= employee.zip_or_postal_code %></td>
+      <td><%= employee.city %></td>
+      <td><%= employee.contract_hours %></td>
+      <% if employee.unit.location_id.present? %>
+      <td><%= location.name %></td>
+      <% else %>
+      <td> <%= nil %>
+      <% end %>
+
+      <td><%= employee.unit.name %></td>
+
+      <td><%= link_to "go to employee", employee_path(employee.id)%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_user.present? && current_user.role == 'Admin' %>
+<p><%= link_to "new employee", new_employee_path %></p>
+<% end %>

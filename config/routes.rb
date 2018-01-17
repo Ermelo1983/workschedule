@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :users
   # resources :locations
   resources :locations do
-  match :typeahead, via: :get, on: :collection
+    match :typeahead, via: :get, on: :collection
   end
 
-  resources :units
+  resources :units do
+    match :typeahead, via: :get, on: :collection
+  end
   resources :employees
 
 

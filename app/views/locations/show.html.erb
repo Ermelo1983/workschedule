@@ -10,11 +10,11 @@
 <p><%= "description: #{unit.description}" %></p>
 <p><%= "care burden: #{unit.care_burden}" %></p>
 <p><%= "employees: #{unit.employees.count}"%></p>
+<%= link_to 'Unit', unit_path %>
+
 <br>
-<% end %>
 
 <h2><%= "Employees #{location.name}"%> </h2>
-<% location.units.each do |unit| %>
 <% unit.employees.each do |employee|%>
 <%= employee.first_name %>
 <%= employee.last_name %>
@@ -25,4 +25,4 @@
 
 
 
-<%= link_to 'new', new_unit_path %>
+<%= link_to 'new', new_employee_path %>

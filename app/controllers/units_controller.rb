@@ -24,13 +24,19 @@ class UnitsController < ApplicationController
   def destroy
   end
 
+  def typeahead
+    @units = Unit.all
+    # @units = filter_from_params @units,:name
+  end
+
   private
   def unit_params
     params.require(:unit).permit(:name, :specialism, :description, :care_burden, :location_id)
   end
 
+
   def sort_column
-  User.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  Unit.column_names.include?(params[:sort]) ? params[:sort] : "id"
   end
 
   def sort_direction
