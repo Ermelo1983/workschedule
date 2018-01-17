@@ -4,7 +4,8 @@
 <%= f.input :specialism %>
 <%= f.input :description %>
 <%= f.input :care_burden %>
-<%= f.association :location, as: :typeahead, typeahead_suggestion_label: :name, value_method: :name%>
+<%= f.association :location%>
+<!-- <%= f.association :location, as: :typeahead, typeahead_suggestion_label: :name, value_method: :name%> -->
 
 <div class="actions">
   <%= f.submit "Save" %>

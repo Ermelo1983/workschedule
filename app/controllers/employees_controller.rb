@@ -1,6 +1,5 @@
 class EmployeesController < ApplicationController
   helper_method :sort_column, :sort_direction
-
   def index
     @employees = Employee.order(sort_column + " " + sort_direction)
   end

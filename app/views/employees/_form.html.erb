@@ -11,8 +11,8 @@
 <%= f.input :payscale %>
 <%= f.input :persons_number %>
 <%= f.input :contract_hours %>
-
-<%= f.association :unit ,as: :typeahead, typeahead_suggestion_label: :name, value_method: :id %>
+<%= f.association :unit %>
+<!-- <%= f.association :unit ,as: :typeahead, typeahead_suggestion_label: :name, value_method: :id %> -->
 
 <div class="actions">
   <%= f.submit "Save" %>
@@ -23,7 +23,7 @@
 
     $(function () {
         var unit_id = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace( 'name'),
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace( "id", "name"),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             remote: {
                 url: '<%= typeahead_units_path(l: 10, q: 'QUERY').html_safe %>',
