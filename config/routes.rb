@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'whoami#index'
 
   devise_for :users, :path_prefix =>'auth'
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
     match :typeahead, via: :get, on: :collection
   end
   resources :employees
+  resources :shifts
+
 
 
 
