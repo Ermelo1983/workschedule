@@ -15,7 +15,7 @@ class UnitsController < ApplicationController
 
   def create
     Unit.create(unit_params)
-      redirect_to units_path(unit.id)
+      redirect_to units_path
   end
 
   def update
