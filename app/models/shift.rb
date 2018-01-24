@@ -1,4 +1,6 @@
 class Shift < ApplicationRecord
+  belongs_to :schedule
+
   validate :location_xor_unit
 
   def location_xor_unit

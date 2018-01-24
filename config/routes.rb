@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   end
   resources :employees
   resources :shifts
-
+  resources :schedules do
+    collection do
+      get :create_this_month_schedule
+    end
+  end
 
 
 
