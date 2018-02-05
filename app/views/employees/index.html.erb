@@ -29,7 +29,7 @@
       <td><%= employee.zip_or_postal_code %></td>
       <td><%= employee.city %></td>
       <td><%= employee.contract_hours %></td>
-      <% if employee.unit.location_id.present? %>
+      <% if location.present? %>
       <td><%= location.name %></td>
       <% else %>
       <td> <%= nil %>

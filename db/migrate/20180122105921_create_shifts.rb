@@ -1,6 +1,6 @@
-class CreateSchedules < ActiveRecord::Migration[5.1]
+class CreateShifts < ActiveRecord::Migration[5.1]
   def change
-    create_table :schedules do |t|
+    create_table :shifts do |t|
       t.string :month
       t.datetime :date
 

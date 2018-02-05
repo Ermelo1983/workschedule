@@ -1,6 +1,6 @@
-class CreateShifts < ActiveRecord::Migration[5.1]
+class CreateShiftTypes < ActiveRecord::Migration[5.1]
   def change
-    create_table :shifts do |t|
+    create_table :shift_types do |t|
       t.string :name
       t.string :description
       t.string :start_time

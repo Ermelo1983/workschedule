@@ -22,6 +22,9 @@ class LocationsController < ApplicationController
   end
 
   def destroy
+  @location = Location.find(params[:id])
+  @location.destroy
+  redirect_to locations_path, flash: {info: "Location '#{@location.name}' destroyed"}
   end
 
   def typeahead

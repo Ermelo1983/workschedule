@@ -43,16 +43,7 @@ ActiveRecord::Schema.define(version: 20180122110115) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.string "month"
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "shift_id"
-    t.index ["shift_id"], name: "index_schedules_on_shift_id"
-  end
-
-  create_table "shifts", force: :cascade do |t|
+  create_table "shift_types", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "start_time"
@@ -62,6 +53,15 @@ ActiveRecord::Schema.define(version: 20180122110115) do
     t.boolean "for_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.string "month"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "shift_type_id"
+    t.index ["shift_type_id"], name: "index_shifts_on_shift_type_id"
   end
 
   create_table "units", force: :cascade do |t|
