@@ -6,8 +6,8 @@ one:
   start_time: MyString
   end_time: MyString
   quantity_per_day: 1
-  for_location: false
-  for_unit: false
+  per_location: false
+  per_unit: false
 
 two:
   name: MyString
@@ -15,5 +15,5 @@ two:
   start_time: MyString
   end_time: MyString
   quantity_per_day: 1
-  for_location: false
-  for_unit: false
+  per_location: false
+  per_unit: false

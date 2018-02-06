@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180122110115) do
     t.string "name"
     t.string "street"
     t.string "house_number"
-    t.string "zip__or_postal_code"
+    t.string "zip_or_postal_code"
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,10 +49,12 @@ ActiveRecord::Schema.define(version: 20180122110115) do
     t.string "start_time"
     t.string "end_time"
     t.integer "quantity_per_day"
-    t.boolean "for_location"
-    t.boolean "for_unit"
+    t.boolean "per_location"
+    t.boolean "per_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_shift_types_on_location_id"
   end
 
   create_table "shifts", force: :cascade do |t|

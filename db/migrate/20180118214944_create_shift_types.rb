@@ -6,8 +6,8 @@ class CreateShiftTypes < ActiveRecord::Migration[5.1]
       t.string :start_time
       t.string :end_time
       t.integer :quantity_per_day
-      t.boolean :for_location
-      t.boolean :for_unit
+      t.boolean :per_location
+      t.boolean :per_unit
 
       t.timestamps
     end

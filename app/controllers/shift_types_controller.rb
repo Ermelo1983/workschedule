@@ -31,7 +31,7 @@ class ShiftTypesController < ApplicationController
 
   private
   def shift_type_params
-    params.require(:shift_type).permit(:name, :description, :start_time, :end_time, :quantity_per_day, :for_location, :for_unit)
+    params.require(:shift_type).permit(:name, :description, :start_time, :end_time, :quantity_per_day, :per_location, :per_unit, :location_id)
   end
 
 

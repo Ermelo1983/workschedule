@@ -5,10 +5,56 @@
 <%= f.input :start_time %>
 <%= f.input :end_time %>
 <%= f.input :quantity_per_day %>
-<%= f.input :for_location %>
-<%= f.input :for_unit %>
+<%= f.association :location %>
+<%= f.input :per_location %>
+<%= f.input :per_unit %>
 
 <div class="actions">
   <%= f.submit "Save" %>
 </div>
 <% end %>
+
+<script>
+    $(function () {
+        var location_id = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace( 'name', 'id'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '<%= typeahead_units_path(l: 10, q: 'QUERY').html_safe %>',
+                wildcard: 'QUERY'
+            }
+        });
+        $('#shift_type_location_id_search')
+            .typeahead({minLength: 1}, {
+                name: 'location_id',
+                display: 'name',
+                source: location_id,
+                limit: Infinity,
+                templates: {
+                    empty: [
+                        '<div class="empty-message">',
+                        '<%= 'niets gevonden'%>',
+                        '</div>'
+                    ].join('\n'),
+                    suggestion: function (a) {
+                        return '<div><strong>'+ typeaheadHelper.highlight(a.location.name,  a._query) + '</strong> - '
+                    }
+                }
+            })
+            .bind('typeahead:select', function (ev, suggestion) {
+                $(this).typeahead('val', null).blur();
+                var valueHtml = $('#unit_location_id_html');
+                valueHtml.find('.selected-value').text(suggestion.location.name);
+                valueHtml.show();
+                $('#shift_type_location_id').val(suggestion.location.id);
+            })
+
+            .bind('keypress keydown keyup', function (e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+    });
+
+</script>
