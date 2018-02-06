@@ -1,5 +1,6 @@
 class Employee < ApplicationRecord
   belongs_to :unit
+  has_many :shifts
 
   def full_name
     ([first_name, last_name] - ['']).compact.join(' ')

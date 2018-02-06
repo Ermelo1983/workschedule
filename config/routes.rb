@@ -4,17 +4,21 @@ Rails.application.routes.draw do
 
   devise_for :users, :path_prefix =>'auth'
   resources :users
-  # resources :locations
-  resources :locations do
-    match :typeahead, via: :get, on: :collection
-  end
+  resources :locations
+  # resources :locations do
+  #   match :typeahead, via: :get, on: :collection
+  # end
 
   resources :units do
     match :typeahead, via: :get, on: :collection
   end
   resources :employees
-  resources :shifts
-
+  resources :shift_types
+  resources :shifts do
+    collection do
+      get :create_this_month_shift
+    end
+  end
 
 
 

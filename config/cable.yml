@@ -7,4 +7,4 @@ test:
 production:
   adapter: redis
   url: redis://localhost:6379/1
-  channel_prefix: workschedule_shifts_production
+  channel_prefix: workshift_shifts_production

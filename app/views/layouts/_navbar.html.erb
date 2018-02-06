@@ -18,16 +18,15 @@
           <a class="dropdown-item" <%= link_to 'Locations', locations_path %></a>
           <a class="dropdown-item" <%= link_to 'Add new location', new_location_path %></a>
           <!-- <a class="dropdown-item" href="#">Something else here</a> -->
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Unit
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" <%= link_to 'Units', units_path %></a>
-          <a class="dropdown-item" <%= link_to 'Add new unit', new_unit_path %></a>
-          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Unit
+          </a>
+          <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" <%= link_to 'Units', units_path %></a>
+            <a class="dropdown-item" <%= link_to 'Add new unit', new_unit_path %></a>
+          </div>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -38,6 +37,23 @@
           <a class="dropdown-item" <%= link_to 'Employees', employees_path %></a>
           <a class="dropdown-item" <%= link_to 'Add new employee', new_employee_path %></a>
           <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Shift
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" <%= link_to 'Shifts', shifts_path %></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Shift types
+          </a>
+          <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" <%= link_to 'Shift types', shift_types_path %></a>
+            <a class="dropdown-item" <%= link_to 'Add new shift type', new_shift_type_path %></a>
+            <!-- <a class="dropdown-item" <%= link_to 'Add new employee', new_employee_path %></a> -->
+          </div>
         </div>
       </li>
       <% if current_user.present? && current_user.role = "Admin"%>

@@ -1,17 +1,17 @@
-<%= simple_form_for @unit do |f| %>
+<%= simple_form_for @shift_type do |f| %>
 <%#devise_error_messages!%>
-<div class="form-control">
-  <%= f.input :name %>
-  <%= f.input :specialism %>
-  <%= f.input :description %>
-  <%= f.input :care_burden %>
-  <%= f.association :location%>
-<!-- <%= f.association :location, as: :typeahead, typeahead_suggestion_label: :name, value_method: :name%> -->
-  <div class="actions">
-    <%= f.submit "Save" %>
-  </div>
-</div>
+<%= f.input :name %>
+<%= f.input :description %>
+<%= f.input :start_time %>
+<%= f.input :end_time %>
+<%= f.input :quantity_per_day %>
+<%= f.association :location %>
+<%= f.input :per_location %>
+<%= f.input :per_unit %>
 
+<div class="actions">
+  <%= f.submit "Save" %>
+</div>
 <% end %>
 
 <script>
@@ -24,7 +24,7 @@
                 wildcard: 'QUERY'
             }
         });
-        $('#unit_location_id_search')
+        $('#shift_type_location_id_search')
             .typeahead({minLength: 1}, {
                 name: 'location_id',
                 display: 'name',
@@ -46,7 +46,7 @@
                 var valueHtml = $('#unit_location_id_html');
                 valueHtml.find('.selected-value').text(suggestion.location.name);
                 valueHtml.show();
-                $('#unit_location_id').val(suggestion.location.id);
+                $('#shift_type_location_id').val(suggestion.location.id);
             })
 
             .bind('keypress keydown keyup', function (e) {

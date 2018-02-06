@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118214944) do
+ActiveRecord::Schema.define(version: 20180122110115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,22 +37,35 @@ ActiveRecord::Schema.define(version: 20180118214944) do
     t.string "name"
     t.string "street"
     t.string "house_number"
-    t.string "zip__or_postal_code"
+    t.string "zip_or_postal_code"
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "shifts", force: :cascade do |t|
+  create_table "shift_types", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "start_time"
     t.string "end_time"
     t.integer "quantity_per_day"
-    t.boolean "for_location"
-    t.boolean "for_unit"
+    t.boolean "per_location"
+    t.boolean "per_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_shift_types_on_location_id"
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.string "month"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "shift_type_id"
+    t.bigint "employee_id"
+    t.index ["employee_id"], name: "index_shifts_on_employee_id"
+    t.index ["shift_type_id"], name: "index_shifts_on_shift_type_id"
   end
 
   create_table "units", force: :cascade do |t|
