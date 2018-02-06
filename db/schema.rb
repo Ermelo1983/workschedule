@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 20180122110115) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "shift_type_id"
+    t.bigint "employee_id"
+    t.index ["employee_id"], name: "index_shifts_on_employee_id"
     t.index ["shift_type_id"], name: "index_shifts_on_shift_type_id"
   end
 

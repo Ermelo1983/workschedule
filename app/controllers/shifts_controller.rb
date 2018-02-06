@@ -33,14 +33,25 @@ class ShiftsController < ApplicationController
     #this has to be something like Location.shifts.all and/or Unit.shifts.all although i think this is covered in the first
     days.each do |date|
       shift_types.each do |shift_type|
-        shift_type.quantity_per_day.times do
-          Shift.create(date: date.to_date, month: date.strftime("%B"), shift_type_id: shift_type.id)
+        if shift_type.per_location?
+          employee = Employee.where(unit_id: Unit.where(location_id: shift_type.location_id)).ids
+          shift_type.quantity_per_day.times do
+            Shift.create(date: date.to_date, month: date.strftime("%B"), shift_type_id: shift_type.id, employee_id: rand(employee[0] .. employee.count))
+          end
+        elsif shift_type.per_unit?
+          units = Unit.where(location_id: shift_type.location_id)
+          units.each do |unit|
+            employee = Employee.where(unit_id: unit.id).ids
+            shift_type.quantity_per_day.times do
+              Shift.create(date: date.to_date, month: date.strftime("%B"), shift_type_id: shift_type.id, employee_id: rand(employee[0] .. employee.count))
+            end
+          end
+
         end
       end
+
     end
     redirect_to shifts_path,  notice:"Successfully created shift for a month"
-
-
   end
 
   def destroy
@@ -49,7 +60,7 @@ class ShiftsController < ApplicationController
   private
 
   def sort_column
-  Shift.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    Shift.column_names.include?(params[:sort]) ? params[:sort] : "id"
   end
 
   def sort_direction

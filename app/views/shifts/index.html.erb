@@ -2,8 +2,16 @@
 <p>Find me in app/views/shifts/index.html.erb</p>
 
 <% @shifts.each do | shift | %>
-<%= shift.shift_type_id %>
+<% shift_type = ShiftType.find_by(id: shift.shift_type_id) %>
+<% employee = Employee.find_by(id: shift.employee_id) %>
+
+<p><%= shift_type.name%>
+<%= "#{shift_type.start_time} - #{shift_type.end_time}"%>
+<%= shift.date.to_date%>
+<%= employee.full_name%>
+</p>
 <% end %>
+
 
 <div class="btn-dark">
   <%= link_to "new month", create_this_month_shift_shifts_path %>

@@ -6,6 +6,7 @@
       <!-- for using sorted on another column change this in controller method sort_column -->
       <th>name</th>
       <th>description</th>
+      <th>location</th>
       <th>start_time</th>
       <th>end_time</th>
       <th>quantity_per_day</th>
@@ -22,12 +23,12 @@
       <td><%= s.id%></td>
       <td><%= s.name %></td>
       <td><%= s.description %></td>
+      <td><%= Location.find_by(id: s.location_id).name%></td>
       <td><%= s.start_time %></td>
       <td><%= s.end_time %></td>
       <td><%= s.quantity_per_day %></td>
       <td><%= s.per_location %></td>
       <td><%= s.per_unit %></td>
-
       <% if current_user.present? && current_user.role == 'Admin' %>
       <td><%= link_to "go to #{s.name}", shift_type_path(s.id)%></td>
       <% end %>

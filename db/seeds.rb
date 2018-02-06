@@ -64,9 +64,7 @@ Location.create!([{name: "Dillenburg", street: 'Dennenlaan', house_number: 2, zi
       {name: 'D08', description: "day(short)", start_time: "07.00", end_time: "15.00", quantity_per_day: 1, location_id: 1, per_location: 1},
       {name: 'D10', description: "day", start_time: "07.00", end_time: "15.30", quantity_per_day: 1, location_id: 1, per_unit: 1},
       {name: 'LC7', description: "evening", start_time: "15.30", end_time: "23.00", quantity_per_day: 1, location_id: 1, per_unit: 1},
-      {name: 'L?', description: "evening(short)", start_time: "17.00", end_time: "22.00", quantity_per_day: 1, location_id: 1, per_location: 1},
-      {name: 'TEST', description: "morning", start_time: "07.00", end_time: "13.00", quantity_per_day: 1, location_id: 2, per_unit: 1}
-
+      {name: 'L?', description: "evening(short)", start_time: "17.00", end_time: "22.00", quantity_per_day: 1, location_id: 1, per_location: 1}
       ])
 
       Employee.create!([{first_name: "Miriam", last_name: "Johnson", street: "Hamburgerweg", house_number: 34, zip_or_postal_code: "3851 EM", city: "Ermelo", birth_date: "04-06-1985", bank_account: "NL73RABO0354270192", payscale: "F-43", persons_number: "0123456789", contract_hours: 32, unit_id: 1 },
