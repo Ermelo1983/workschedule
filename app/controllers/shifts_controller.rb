@@ -28,25 +28,16 @@ class ShiftsController < ApplicationController
   end
 
   def create_this_month_shift
-    days = (DateTime.now + 4.month).beginning_of_month .. (DateTime.now + 4.month).end_of_month
+    days = (DateTime.now + 1.month).beginning_of_month .. (DateTime.now + 1.month).end_of_month
     shift_types = ShiftType.all
     #this has to be something like Location.shifts.all and/or Unit.shifts.all although i think this is covered in the first
     days.each do |date|
       shift_types.each do |shift_type|
         employee = get_employee(shift_type)
-        if shift_type.per_location?
-          shift_type.quantity_per_day.times do
-            Shift.create(date: date.to_date, month: date.strftime("%B"), shift_type_id: shift_type.id, employee_id: rand(employee[0] .. (employee.count-1)))
-          end
-        elsif shift_type.per_unit?
-            shift_type.quantity_per_day.times do
-              Shift.create(date: date.to_date, month: date.strftime("%B"), shift_type_id: shift_type.id, employee_id: rand(employee[0] .. (employee.count-1)))
-            end
-          end
-
-
+        shift_type.quantity_per_day.times do
+          Shift.create(date: date.to_date, month: date.strftime("%B"), shift_type_id: shift_type.id, employee_id: rand(employee[0] .. (employee.count-1)))
+        end
       end
-
     end
     redirect_to shifts_path,  notice:"Successfully created shift for a month"
   end
