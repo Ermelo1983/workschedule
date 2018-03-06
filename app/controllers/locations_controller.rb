@@ -29,7 +29,7 @@ class LocationsController < ApplicationController
 
   def typeahead
     @locations = Location.all
-    # @locations = filter_from_params @locations,:name
+    @locations = filter_from_params @locations,:name
   end
 
   private
