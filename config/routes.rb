@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users, :path_prefix =>'auth'
   resources :users
-  resources :locations
+  resources :locations do
+    match :typeahead, via: :get, on: :collection
+
+  end
   # resources :locations do
   #   match :typeahead, via: :get, on: :collection
   # end
@@ -19,6 +22,13 @@ Rails.application.routes.draw do
       get :create_this_month_shift
     end
   end
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :locations, only: [:index, :show]
+    end
+  end
+
 
 
 

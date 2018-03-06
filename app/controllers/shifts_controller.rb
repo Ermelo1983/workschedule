@@ -36,7 +36,6 @@ class ShiftsController < ApplicationController
         employee = get_location_or_unit(shift_type, employee)
         shift_type.quantity_per_day.times do
           Shift.create(date: date.to_date, month: date.strftime("%B"), shift_type_id: shift_type.id, employee_id: employee)
-          employee.made_hours +1
         end
       end
     end
@@ -56,7 +55,7 @@ class ShiftsController < ApplicationController
     employees = Employee.where(unit_id: Unit.where(location_id: shift_type.location_id))
     employees.each do |employee|
       given_hours = employee.contract_hours
-      made_hours = 0
+      # made_hours = 0
       # made_hours + (shift.end_time - shift.start_time)
       # if made_hours == given_hours || made_hours => given_hours current employee cant be given to create_this_month_shift
     end
