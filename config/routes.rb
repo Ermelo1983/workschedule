@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # end
 
   resources :units do
-    match :typeahead, via: :get, on: :collection
+    # match :typeahead, via: :get, on: :collection
   end
   resources :employees
   resources :shift_types
