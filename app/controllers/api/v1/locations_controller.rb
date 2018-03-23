@@ -9,7 +9,7 @@ class Api::V1::LocationsController < Api::V1::ApiController
   def index
     respond_with_render :index
   end
-  
+
   def show
     respond_with_render :show
   end

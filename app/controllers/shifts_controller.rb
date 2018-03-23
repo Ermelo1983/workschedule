@@ -13,12 +13,11 @@ class ShiftsController < ApplicationController
   end
 
   def new
+    @shift = Shift.new
   end
 
   def create
-    # days = DateTime.now.beginning_of_month .. DateTime.now.end_of_month
-    # days.each do |date|
-    # date.to_date, @shift.each do    end
+    create_this_month_shift
   end
 
   def update
@@ -36,6 +35,7 @@ class ShiftsController < ApplicationController
         employee = get_location_or_unit(shift_type, employee)
         shift_type.quantity_per_day.times do
           Shift.create(date: date.to_date, month: date.strftime("%B"), shift_type_id: shift_type.id, employee_id: employee)
+
         end
       end
     end
@@ -47,21 +47,26 @@ class ShiftsController < ApplicationController
       employee = get_employee(shift_type, employee)
     elsif shift_type.per_unit?
       unit = Unit.where(location_id: shift_type.location_id)
-      employee = Employee.where(unit_id: unit.ids).ids
+      employees = Employee.where(unit_id: unit.ids).ids
+      employee = rand(employees[0] .. (employees.count-1))
+      # create logic for selecting employee based on contracthours and already planned hours in get_location_or_unit elsif statement also in get employee needs the same logic so it has to be a new method
     end
   end
 
   def get_employee(shift_type, employee)
-    employees = Employee.where(unit_id: Unit.where(location_id: shift_type.location_id))
-    employees.each do |employee|
-      given_hours = employee.contract_hours
+    employees = Employee.where(unit_id: Unit.where(location_id: shift_type.location_id)).ids
+    employee = rand(employees[0] .. (employees.count-1))
+    # create logic for selecting employee based on contracthours and already planned hours in get_location_or_unit elsif statement also in get employee needs the same logic so it has to be a new method
+
+
+      # maybe i have tor remove his lines or re-use it in a way i can use it
+    # employees.each do |employee|
+      # given_hours = employee.contract_hours
       # made_hours = 0
       # made_hours + (shift.end_time - shift.start_time)
       # if made_hours == given_hours || made_hours => given_hours current employee cant be given to create_this_month_shift
-    end
+    # end
   end
-
-
 
   def destroy
   end
