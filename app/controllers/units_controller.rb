@@ -24,10 +24,10 @@ class UnitsController < ApplicationController
   def destroy
   end
 
-  def typeahead
-    @units = Unit.all
-    # @units = filter_from_params @units,:name
-  end
+  # def typeahead
+  #   @units = Unit.all
+  #   @units = filter_from_params @units,:name
+  # end
 
   private
   def unit_params

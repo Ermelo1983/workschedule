@@ -1,0 +1,11 @@
+<%= "hiahiahha" %>
+
+
+<%= simple_form_for @shift do |f| %>
+<%#devise_error_messages!%>
+<%= f.input :month, as: :date%>
+
+<div class="actions">
+  <%= f.submit "Save" %>
+</div>
+<% end %>

@@ -5,8 +5,8 @@
   <%= f.input :specialism %>
   <%= f.input :description %>
   <%= f.input :care_burden %>
-  <%= f.association :location%>
-<!-- <%= f.association :location, as: :typeahead, typeahead_suggestion_label: :name, value_method: :name%> -->
+  <!-- <%= f.association :location%> -->
+<%= f.association :location, as: :typeahead, typeahead_suggestion_label: :name, value_method: :name%>
   <div class="actions">
     <%= f.submit "Save" %>
   </div>
@@ -20,7 +20,7 @@
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace( 'name', 'id'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             remote: {
-                url: '<%= typeahead_units_path(l: 10, q: 'QUERY').html_safe %>',
+                url: '<%= typeahead_locations_path(l: 10, q: 'QUERY').html_safe %>',
                 wildcard: 'QUERY'
             }
         });

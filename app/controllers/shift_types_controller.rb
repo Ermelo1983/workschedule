@@ -24,10 +24,10 @@ class ShiftTypesController < ApplicationController
   def destroy
   end
 
-  def typeahead
-    @shift_types = ShiftType.all
-    # @units = filter_from_params @units,:name
-  end
+  # def typeahead
+  #   @shift_types = ShiftType.all
+  #   # @units = filter_from_params @units,:name
+  # end
 
   private
   def shift_type_params

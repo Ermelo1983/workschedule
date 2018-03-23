@@ -9,10 +9,12 @@
 <%= "#{shift_type.start_time} - #{shift_type.end_time}"%>
 <%= shift.date.to_date%>
 <%= employee.full_name%>
+<%= employee.contract_hours%>
+
 </p>
 <% end %>
 
 
 <div class="btn-dark">
-  <%= link_to "new month", create_this_month_shift_shifts_path %>
+  <%= link_to "new month", new_shift_path %>
 </div>
